@@ -1,0 +1,21 @@
+.navbar{
+    background-color: greenyellow;
+    position: sticky;
+    top:0;
+      z-index: 1000; /* keeps it above other content */
+      padding: 0.5rem 1rem;
+
+}
+
+.options-nav{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 3px;
+    list-style: none;
+}
+
+.options-nav li{
+        padding: 5px;
+
+}

@@ -1,0 +1,20 @@
+.company-section {
+  background-color: green;
+  color: #9ca3af; /* similar to Tailwind's gray-400 */
+  padding: 2.5rem 0; 
+  /* py-10 */
+  overflow: hidden;
+  margin-top: 0px;
+}
+
+.company-marquee {
+  display: flex;
+  gap: 5rem; /* gap-20 */
+  font-size: 1.5rem; /* text-2xl */
+  font-weight: 500; /* font-medium */
+  white-space: nowrap;
+}
+
+.company-name {
+  display: inline-block;
+}
