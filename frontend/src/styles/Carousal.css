@@ -1,0 +1,178 @@
+.carousel-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  padding: 40px 20px;
+  position: relative;
+}
+
+.carousel-content {
+  position: relative;
+  width: 100%;
+  max-width: 1400px;
+  height: 580px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.carousel-card {
+  position: absolute;
+  width: 300px;
+  height: 480px;
+  display: flex;
+  flex-direction: column;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transition: all 0.4s ease;
+  cursor: pointer;
+  border: 3px solid transparent;
+  background: white;
+}
+
+.carousel-card.position-0 {
+  transform: translateX(-60%) scale(0.8);
+  opacity: 0.5;
+  z-index: 1;
+}
+
+.carousel-card.position-1 {
+  transform: translateX(0) scale(1);
+  opacity: 1;
+  z-index: 3;
+  border-color: #d4a574;
+  box-shadow: 0 8px 24px rgba(212, 165, 116, 0.3);
+}
+
+.carousel-card.position-2 {
+  transform: translateX(60%) scale(0.8);
+  opacity: 0.5;
+  z-index: 2;
+}
+
+.carousel-card.position-3 {
+  transform: translateX(120%) scale(0.65);
+  opacity: 0.3;
+  z-index: 1;
+}
+
+.carousel-card.position-4 {
+  transform: translateX(-120%) scale(0.65);
+  opacity: 0.3;
+  z-index: 1;
+}
+
+.card-image-wrapper {
+  flex: 1;
+  background: linear-gradient(135deg, #f5f5f5 0%, #fafafa 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  min-height: 250px;
+}
+
+.card-image-wrapper img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  padding: 20px;
+}
+
+.card-label {
+  background: linear-gradient(135deg, #6b8e6a 0%, #5a7d59 100%);
+  color: white;
+  padding: 12px;
+  text-align: center;
+  font-weight: bold;
+  font-size: 16px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.carousel-card.position-1 .card-label {
+  background: linear-gradient(135deg, #d4a574 0%, #c99461 100%);
+}
+
+.card-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  padding: 12px;
+  justify-content: center;
+  background: #f9f9f9;
+}
+
+.tag {
+  background-color: #e8f0e8;
+  color: #2d5016;
+  padding: 4px 10px;
+  border-radius: 16px;
+  font-size: 12px;
+  font-weight: 600;
+  border: 1px solid #d4e6d4;
+}
+
+.carousel-card.position-1 .tag {
+  background-color: #fef3eb;
+  color: #8b6b47;
+  border-color: #f0dcc8;
+}
+
+.learn-more-btn {
+  background: linear-gradient(135deg, #27ae60 0%, #229954 100%);
+  color: white;
+  padding: 10px;
+  text-align: center;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 14px;
+  transition: opacity 0.3s;
+  margin: 0 8px 8px 8px;
+  border-radius: 6px;
+}
+
+.learn-more-btn:hover {
+  opacity: 0.9;
+}
+
+.carousel-card.position-1 .learn-more-btn {
+  background: linear-gradient(135deg, #d4a574 0%, #c99461 100%);
+}
+
+.carousel-arrow {
+  background: none;
+  border: none;
+  font-size: 48px;
+  color: #333;
+  cursor: pointer;
+  padding: 10px 20px;
+  transition: color 0.3s;
+  z-index: 4;
+}
+
+.carousel-arrow:hover {
+  color: #d4a574;
+}
+
+@media (max-width: 768px) {
+  .carousel-card {
+    width: 220px;
+    height: 380px;
+  }
+
+  .carousel-arrow {
+    font-size: 36px;
+    padding: 10px 10px;
+  }
+
+  .carousel-content {
+    height: 450px;
+  }
+
+  .card-label {
+    font-size: 14px;
+  }
+}
