@@ -3,8 +3,11 @@
   align-items: center;
   justify-content: center;
   gap: 20px;
-  padding: 40px 20px;
+  padding: 20px; /* reduced padding so mobile can use full width */
   position: relative;
+  background-color: #d8ece0;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .carousel-content {
@@ -15,12 +18,14 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  overflow: visible;
 }
 
+/* responsive card sizing */
 .carousel-card {
   position: absolute;
-  width: 300px;
-  height: 480px;
+  width: clamp(260px, 34vw, 360px);
+  height: clamp(420px, 48vh, 520px);
   display: flex;
   flex-direction: column;
   border-radius: 12px;
@@ -142,37 +147,105 @@
   background: linear-gradient(135deg, #d4a574 0%, #c99461 100%);
 }
 
+/* arrows overlay (improve mobile touch targets) */
 .carousel-arrow {
-  background: none;
+  background: rgba(255,255,255,0.9);
+  border-radius: 50%;
   border: none;
-  font-size: 48px;
+  font-size: 44px;
   color: #333;
   cursor: pointer;
-  padding: 10px 20px;
-  transition: color 0.3s;
-  z-index: 4;
+  width: 56px;
+  height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color 0.3s, background 0.2s;
+  z-index: 60;
+  position: relative;
 }
+
+/* position arrows absolutely so they don't push content on very small screens */
+.carousel-arrow.left { position: absolute; left: 8px; top: 50%; transform: translateY(-50%); }
+.carousel-arrow.right { position: absolute; right: 8px; top: 50%; transform: translateY(-50%); }
 
 .carousel-arrow:hover {
   color: #d4a574;
+  background: rgba(255,255,255,1);
 }
 
-@media (max-width: 768px) {
-  .carousel-card {
-    width: 220px;
-    height: 380px;
-  }
-
-  .carousel-arrow {
-    font-size: 36px;
-    padding: 10px 10px;
+/* MOBILE: switch to horizontal scroll + snap so cards fill viewport */
+@media (max-width: 700px) {
+  .carousel-container {
+    padding: 12px 6px;
   }
 
   .carousel-content {
-    height: 450px;
+    position: relative;
+    height: auto;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 12px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    padding: 8px;
+  }
+
+  /* Make each card flow inline and take most of the viewport width */
+  .carousel-card {
+    position: relative;
+    flex: 0 0 86%;
+    width: 86%;
+    height: auto;
+    min-height: 380px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+    scroll-snap-align: center;
+    margin: 0 6%;
+    transition: transform 320ms ease, opacity 320ms ease;
+    opacity: 1 !important; /* prevent desktop opacity rules from hiding cards */
+    transform: none !important; /* prevent desktop transforms */
+  }
+
+  /* make active card visually stronger */
+  .carousel-card.active {
+    border-color: #d4a574;
+    box-shadow: 0 14px 36px rgba(212,165,116,0.24);
+  }
+
+  .card-image-wrapper {
+    min-height: 240px;
   }
 
   .card-label {
-    font-size: 14px;
+    font-size: 18px;
+    padding: 10px;
+  }
+
+  .card-tags {
+    padding: 10px;
+  }
+
+  .learn-more-btn {
+    margin-bottom: 14px;
+    padding: 12px 18px;
+    font-size: 15px;
+  }
+
+  /* reduce arrow visual weight on small screens (still clickable) */
+  .carousel-arrow {
+    width: 44px;
+    height: 44px;
+    font-size: 28px;
+    background: rgba(255,255,255,0.85);
+  }
+
+  /* hide position-based classes that applied desktop transforms (optional) */
+  .carousel-card.position-0,
+  .carousel-card.position-2,
+  .carousel-card.position-3,
+  .carousel-card.position-4 {
+    transform: none;
+    opacity: 1;
   }
 }

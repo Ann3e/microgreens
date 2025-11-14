@@ -1,20 +1,21 @@
 import React from 'react'
-import Hero from './components/Hero'
-import Marquee from './components/Marquee'
 import Navbar from './components/Navbar'
 // import Caraousal from './components/Carousal'
-import Carousal from './components/Carousal';
+// import Carousal from './components/Carousal';
 import { microgreensProducts } from './data/products';
-// import ProductCarousel from './components/ProductCarousel'
+import Hero from './components/Hero';
+// import the page component (ensure pages/index.jsx exports default)
+import Home from './pages/index';
+import Features from './components/Features';
 
 const App = () => {
   return (
     <div>
       <Navbar/>
       <Hero/>
-      <Marquee/>
-      {/* <ProductCarousel/> */}
-      <Carousal  products={microgreensProducts}/>
+      <Home/>
+      {/* <Carousal  products={microgreensProducts}/> */}
+      <Features/>
     </div>
   )
 }
