@@ -8,7 +8,7 @@ import Hero from './components/Hero';
 // import the page component (ensure pages/index.jsx exports default)
 import Home from './pages/index';
 import Features from './components/Features';
-
+import Footer from './components/Footer';
 const App = () => {
   return (
     <div>
@@ -18,6 +18,7 @@ const App = () => {
       <Home/>
       {/* <Carousal  products={microgreensProducts}/> */}
       <Features/>
+      <Footer/>
     </div>
   )
 }
