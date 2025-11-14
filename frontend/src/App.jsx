@@ -1,5 +1,6 @@
 import React from 'react'
 import Navbar from './components/Navbar'
+import Process from './components/Process'
 // import Caraousal from './components/Carousal'
 // import Carousal from './components/Carousal';
 import { microgreensProducts } from './data/products';
@@ -13,6 +14,7 @@ const App = () => {
     <div>
       <Navbar/>
       <Hero/>
+      <Process />
       <Home/>
       {/* <Carousal  products={microgreensProducts}/> */}
       <Features/>

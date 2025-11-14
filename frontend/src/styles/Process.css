@@ -1,0 +1,123 @@
+:root{
+  --accent: #24c36b;
+  --accent-dark: #18a84d;
+  --muted: #6b8278;
+  --bg: #fbfbf8;
+  --max-width: 1200px;
+}
+
+.process-section{
+  background: var(--bg);
+  padding: 4rem 1rem;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+}
+
+.process-section .container{
+  max-width: var(--max-width);
+  margin: 0 auto;
+  text-align: center;
+}
+
+.process-title{
+  font-size: 2.75rem;
+  margin-bottom: 0.5rem;
+  color: #15382f;
+  font-weight: 700;
+}
+
+.process-title .highlight{
+  color: var(--accent);
+}
+
+.process-subtitle{
+  color: var(--muted);
+  max-width: 780px;
+  margin: 0 auto 2.5rem;
+  line-height: 1.6;
+}
+
+.process-grid{
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2.5rem;
+  align-items: start;
+}
+
+/* each step */
+.process-step{
+  text-align: center;
+  padding-top: 1.5rem;
+}
+
+.step-top{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap: 1rem;
+  margin-bottom: 1.25rem;
+  position: relative;
+}
+
+/* horizontal lines left/right */
+.line{
+  height: 3px;
+  background: linear-gradient(90deg, rgba(36,195,107,0.15), rgba(36,195,107,0.8));
+  flex: 1 1 0;
+  border-radius: 2px;
+}
+
+/* hide outer lines for first/last via aria-hidden or nth-child */
+.process-step:first-child .line.left,
+.process-step:last-child .line.right{
+  background: transparent;
+}
+
+/* circle */
+.step-circle{
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  background: linear-gradient(180deg, var(--accent), var(--accent-dark));
+  color: white;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-weight:700;
+  box-shadow: 0 12px 30px rgba(36,195,107,0.15);
+  font-size: 1.1rem;
+}
+
+/* title and desc */
+.step-title{
+  color: var(--accent);
+  font-size: 1.15rem;
+  margin-bottom: 0.6rem;
+  font-weight:600;
+}
+
+.step-desc{
+  color: var(--muted);
+  font-size: 0.98rem;
+  line-height: 1.6;
+  padding: 0 0.5rem;
+}
+
+/* responsive */
+@media (max-width: 900px){
+  .process-grid{
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+  }
+  .process-title{ font-size: 2.25rem; }
+}
+
+@media (max-width: 520px){
+  .process-grid{
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  .step-top{ margin-bottom: 0.75rem; }
+  .step-circle{ width: 56px; height:56px; font-size: 0.95rem; }
+  .process-title{ font-size: 1.75rem; }
+  .process-subtitle{ padding: 0 1rem; font-size: 0.95rem; }
+}

@@ -37,7 +37,7 @@ export default function Carousal({ products }) {
           return (
             <div
               key={index}
-              className={`carousel-card position-${position}`}
+              className={`carousel-card position-${position} ${index === currentIndex ? 'active' : ''}`}
             >
               <div className="card-image-wrapper">
                 <img src={product.image} alt={product.name} />

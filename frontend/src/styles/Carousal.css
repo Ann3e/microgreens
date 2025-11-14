@@ -1,15 +1,25 @@
+:root{
+  --accent: #24c36b;
+  --accent-dark: #18a84d;
+  --muted: #6b8278;
+  --bg: #fbfbf8;
+  --card-accent: #d4a574; /* optional highlight for active card */
+}
+
+/* container bg changed to match Process theme */
 .carousel-container {
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 20px;
-  padding: 20px; /* reduced padding so mobile can use full width */
+  padding: 20px;
   position: relative;
-  background-color: #d8ece0;
+  background-color: var(--bg);
   width: 100%;
   box-sizing: border-box;
 }
 
+/* content sizing unchanged */
 .carousel-content {
   position: relative;
   width: 100%;
@@ -21,7 +31,7 @@
   overflow: visible;
 }
 
-/* responsive card sizing */
+/* cards keep same layout but use softer borders and themed colors */
 .carousel-card {
   position: absolute;
   width: clamp(260px, 34vw, 360px);
@@ -30,13 +40,14 @@
   flex-direction: column;
   border-radius: 12px;
   overflow: hidden;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
   transition: all 0.4s ease;
   cursor: pointer;
   border: 3px solid transparent;
-  background: white;
+  background: linear-gradient(180deg, rgba(255,255,255,0.98), rgba(250,250,250,1));
 }
 
+/* positions (same transforms) */
 .carousel-card.position-0 {
   transform: translateX(-60%) scale(0.8);
   opacity: 0.5;
@@ -47,8 +58,8 @@
   transform: translateX(0) scale(1);
   opacity: 1;
   z-index: 3;
-  border-color: #d4a574;
-  box-shadow: 0 8px 24px rgba(212, 165, 116, 0.3);
+  border-color: var(--card-accent);
+  box-shadow: 0 8px 24px rgba(212, 165, 116, 0.18);
 }
 
 .carousel-card.position-2 {
@@ -69,9 +80,10 @@
   z-index: 1;
 }
 
+/* image area */
 .card-image-wrapper {
   flex: 1;
-  background: linear-gradient(135deg, #f5f5f5 0%, #fafafa 100%);
+  background: linear-gradient(135deg, #f7faf6 0%, #fbfcfb 100%);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -86,8 +98,9 @@
   padding: 20px;
 }
 
+/* label uses process-green accent by default and a warm accent for active */
 .card-label {
-  background: linear-gradient(135deg, #6b8e6a 0%, #5a7d59 100%);
+  background: linear-gradient(135deg, var(--accent) 0%, var(--accent-dark) 100%);
   color: white;
   padding: 12px;
   text-align: center;
@@ -98,9 +111,10 @@
 }
 
 .carousel-card.position-1 .card-label {
-  background: linear-gradient(135deg, #d4a574 0%, #c99461 100%);
+  background: linear-gradient(135deg, var(--card-accent) 0%, #c99461 100%);
 }
 
+/* tags use softer green palette */
 .card-tags {
   display: flex;
   flex-wrap: wrap;
@@ -111,23 +125,24 @@
 }
 
 .tag {
-  background-color: #e8f0e8;
-  color: #2d5016;
+  background-color: rgba(36,195,107,0.08);
+  color: var(--accent-dark);
   padding: 4px 10px;
   border-radius: 16px;
   font-size: 12px;
   font-weight: 600;
-  border: 1px solid #d4e6d4;
+  border: 1px solid rgba(36,195,107,0.12);
 }
 
 .carousel-card.position-1 .tag {
-  background-color: #fef3eb;
+  background-color: rgba(212,165,116,0.06);
   color: #8b6b47;
-  border-color: #f0dcc8;
+  border-color: rgba(212,165,116,0.12);
 }
 
+/* CTA uses process accent */
 .learn-more-btn {
-  background: linear-gradient(135deg, #27ae60 0%, #229954 100%);
+  background: linear-gradient(135deg, var(--accent) 0%, var(--accent-dark) 100%);
   color: white;
   padding: 10px;
   text-align: center;
@@ -137,19 +152,20 @@
   transition: opacity 0.3s;
   margin: 0 8px 8px 8px;
   border-radius: 6px;
+  display: inline-block;
 }
 
 .learn-more-btn:hover {
-  opacity: 0.9;
+  opacity: 0.92;
 }
 
 .carousel-card.position-1 .learn-more-btn {
-  background: linear-gradient(135deg, #d4a574 0%, #c99461 100%);
+  background: linear-gradient(135deg, var(--card-accent) 0%, #c99461 100%);
 }
 
-/* arrows overlay (improve mobile touch targets) */
+/* arrows use subtle theme colors */
 .carousel-arrow {
-  background: rgba(255,255,255,0.9);
+  background: rgba(255,255,255,0.95);
   border-radius: 50%;
   border: none;
   font-size: 44px;
@@ -160,21 +176,20 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: color 0.3s, background 0.2s;
+  transition: color 0.2s, background 0.2s;
   z-index: 60;
   position: relative;
 }
 
-/* position arrows absolutely so they don't push content on very small screens */
 .carousel-arrow.left { position: absolute; left: 8px; top: 50%; transform: translateY(-50%); }
 .carousel-arrow.right { position: absolute; right: 8px; top: 50%; transform: translateY(-50%); }
 
 .carousel-arrow:hover {
-  color: #d4a574;
+  color: var(--card-accent);
   background: rgba(255,255,255,1);
 }
 
-/* MOBILE: switch to horizontal scroll + snap so cards fill viewport */
+/* MOBILE: horizontal scroll + snap */
 @media (max-width: 700px) {
   .carousel-container {
     padding: 12px 6px;
@@ -192,25 +207,24 @@
     padding: 8px;
   }
 
-  /* Make each card flow inline and take most of the viewport width */
   .carousel-card {
     position: relative;
     flex: 0 0 86%;
     width: 86%;
     height: auto;
     min-height: 380px;
-    box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.08);
     scroll-snap-align: center;
     margin: 0 6%;
     transition: transform 320ms ease, opacity 320ms ease;
-    opacity: 1 !important; /* prevent desktop opacity rules from hiding cards */
-    transform: none !important; /* prevent desktop transforms */
+    opacity: 1 !important;
+    transform: none !important;
   }
 
-  /* make active card visually stronger */
+  /* active class applied by component for mobile highlight */
   .carousel-card.active {
-    border-color: #d4a574;
-    box-shadow: 0 14px 36px rgba(212,165,116,0.24);
+    border-color: var(--card-accent);
+    box-shadow: 0 14px 36px rgba(212,165,116,0.18);
   }
 
   .card-image-wrapper {
@@ -232,15 +246,13 @@
     font-size: 15px;
   }
 
-  /* reduce arrow visual weight on small screens (still clickable) */
   .carousel-arrow {
     width: 44px;
     height: 44px;
     font-size: 28px;
-    background: rgba(255,255,255,0.85);
+    background: rgba(255,255,255,0.9);
   }
 
-  /* hide position-based classes that applied desktop transforms (optional) */
   .carousel-card.position-0,
   .carousel-card.position-2,
   .carousel-card.position-3,
